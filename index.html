@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domaci 2 - Anja Karovic</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <h2 class="d-flex justify-content-center mb-5">Filmovi za pogledati</h2>
+
+    <!-- Button trigger modal -->
+    <button type="button" id="showModal" class="float-end btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
+        Dodaj novi film
+    </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Novi film</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form id="form">
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div id="tableDiv">
+        <table id="movieTable" class="mt-5 table table-hover text-center">
+            <thead>
+                <tr>
+                    <th>Odgledan</th>
+                    <th>Naziv</th>
+                    <th>Godina</th>
+                    <th>Država</th>
+                    <th>Napomena</th>
+                    <th>Glumci</th>
+                </tr>
+            </thead>
+            <tbody id="moviesTBody">
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>

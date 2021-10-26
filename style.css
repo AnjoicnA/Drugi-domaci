@@ -1,0 +1,17 @@
+label{
+    margin-right: 10px;
+}
+
+
+.alert{
+    color: red;
+}
+
+
+.checked{
+    background-color: #D1E7DD;
+}
+
+.notChecked{
+    background-color: #F8D7DA;
+}
