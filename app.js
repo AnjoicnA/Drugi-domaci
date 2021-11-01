@@ -52,7 +52,7 @@ function drawRow(filmArr){
     tr.innerHTML = moviesRows.join(''); //dodaj mi kreirane celije u red
     document.getElementById("moviesTBody").append(tr); //na kraju sve to dodaj u body tabele
 
-    }
+}
 
 
 //iscrtaj mi redove za vec postojece filmove    
@@ -68,7 +68,7 @@ document.getElementById('showModal').addEventListener('click', () => {
                                                 </div>
                                                 <div>
                                                     <label for="movieYear" class="form-label">Godina:</label>
-                                                    <input type="number" min="1930" max="2021" class="form-control" id="movieYear">
+                                                    <input type="number" value="2021" min="1930" max="2021" class="form-control" id="movieYear">
                                                     <span class="alert" id="yearSpan"></span>
                                                 </div>
                                                 <div>
@@ -89,6 +89,7 @@ document.getElementById('showModal').addEventListener('click', () => {
                                                     <label class="form-check-label" for="watched">Odgledan</label>
                                                     <input type="checkbox" class="form-check-input" id="watched">
                                                 </div>
+                                                <div id="message"></div>
                                                 <input type="button" id="addMovieBtn" class="btn btn-primary mt-3" value="Dodaj film">`
 
 let addMovieBtn = document.getElementById('addMovieBtn');
@@ -138,11 +139,13 @@ function checkInputs(movieName, movieYear, movieCounty, actors){
     let actorsSpan = document.getElementById('actorsSpan');
     let yearSpan = document.getElementById('yearSpan');
     let countrySpan = document.getElementById('countrySpan');
+    let messageDiv = document.getElementById('message');
 
     movieNameSpan.innerHTML = '';
     actorsSpan.innerHTML = '';
     yearSpan.innerHTML = '';
     countrySpan.innerHTML = '';
+    messageDiv.innerHTML = '';
 
 
     //Naziv mora da ima nesto upisano
@@ -151,9 +154,12 @@ function checkInputs(movieName, movieYear, movieCounty, actors){
         return false;
     }
  
-
     //Godina mora da bude izmedju 1930. i 2021.
-    if(movieYear < 1930){
+    if(isNaN(movieYear)){
+        yearSpan.innerHTML = '*Unesi godinu.';
+        return false;
+    }
+    else if(movieYear < 1930){
         yearSpan.innerHTML = '*Godina ne može biti manja od 1930!';
         return false;
     }
@@ -193,5 +199,21 @@ function drawInputs(){
 
         //resetuj mi formu
         document.getElementById('form').reset();
+
+        document.getElementById('message').style.color = 'green';
+        document.getElementById('message').innerHTML = "Film uspješno dodat. Želiš da dodaš novi?"
     }
 }
+
+
+document.getElementById('tableDiv').addEventListener('change',function(e){
+
+    if(e.target && e.target.type == 'checkbox' && e.target.checked){
+        e.target.parentNode.parentNode.classList.remove('notChecked');
+        e.target.parentNode.parentNode.classList.add('checked')
+    }
+    else if(e.target && e.target.type == 'checkbox' && !e.target.checked){
+        e.target.parentNode.parentNode.classList.remove('checked');
+        e.target.parentNode.parentNode.classList.add('notChecked')
+    }
+ });
